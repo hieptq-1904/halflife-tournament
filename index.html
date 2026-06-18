@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DU10 Half-Life Tournament</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page">
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__bg-image"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__vignette"></div>
+      <div class="hero__smoke hero__smoke--1"></div>
+      <div class="hero__smoke hero__smoke--2"></div>
+      <div class="hero__smoke hero__smoke--3"></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="nav">
+      <a href="#" class="nav__logo" aria-label="DU10 Half-Life Tournament">
+        <span class="nav__logo-img" role="img" aria-hidden="true"></span>
+        <span class="nav__logo-divider" aria-hidden="true"></span>
+        <span class="nav__logo-text">HALF-LIFE<br /><small>TOURNAMENT</small></span>
+      </a>
+      <nav class="nav__links">
+        <a href="#countdown">Countdown</a>
+        <a href="#tournaments">Tournaments</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#register" class="nav__cta">Register</a>
+      </nav>
+      <button class="nav__burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Left decorative rail -->
+    <div class="hero__rail">
+      <span class="hero__rail-text">BRACE FOR IMPACT</span>
+      <div class="hero__rail-line"></div>
+      <div class="hero__rail-bars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Team showcase -->
+    <div class="hero__content">
+      <div class="team-showcase" id="teamShowcase">
+        <button type="button" class="team-showcase__frame" id="teamImageTrigger" aria-label="View team image">
+          <img class="team-showcase__image" src="" alt="" />
+          <span class="team-showcase__frame-corner team-showcase__frame-corner--tl"></span>
+          <span class="team-showcase__frame-corner team-showcase__frame-corner--br"></span>
+        </button>
+        <div class="team-showcase__info">
+          <p class="team-showcase__label">// REGISTERED TEAM</p>
+          <div class="team-showcase__details">
+            <h2 class="team-showcase__name"></h2>
+            <a href="#" class="team-showcase__btn">
+              <span>VIEW DETAIL</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide carousel -->
+    <div class="hero__gallery carousel" id="carousel">
+      <svg class="carousel__defs" width="0" height="0" aria-hidden="true">
+        <defs>
+          <clipPath id="folder-clip" clipPathUnits="objectBoundingBox">
+            <path d="M 0.04 0.14
+                     L 0.04 0.93
+                     Q 0.04 0.98 0.09 0.98
+                     L 0.91 0.98
+                     Q 0.96 0.98 0.96 0.93
+                     L 0.96 0.14
+                     L 0.74 0.14
+                     L 0.70 0.04
+                     L 0.54 0.04
+                     L 0.50 0.14
+                     Z" />
+          </clipPath>
+        </defs>
+      </svg>
+      <div class="carousel__track"></div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll">
+      <span>SCROLL</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="section section--countdown" id="countdown">
+    <div class="container">
+      <div class="section__label">// COUNTDOWN TO BATTLE</div>
+      <div class="countdown__body">
+        <h2 class="section__title">DEPLOYMENT IN</h2>
+        <p class="countdown__target">August 12, 2026 — 08:00 AM</p>
+        <div class="countdown" id="countdown-timer" aria-live="polite">
+        <div class="countdown__unit">
+          <span class="countdown__value" id="countdown-days">00</span>
+          <span class="countdown__unit-label">Days</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__unit">
+          <span class="countdown__value" id="countdown-hours">00</span>
+          <span class="countdown__unit-label">Hours</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__unit">
+          <span class="countdown__value" id="countdown-minutes">00</span>
+          <span class="countdown__unit-label">Minutes</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__unit">
+          <span class="countdown__value" id="countdown-seconds">00</span>
+          <span class="countdown__unit-label">Seconds</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournaments -->
+  <section class="section section--tournaments" id="tournaments">
+    <div class="container">
+      <div class="section__label">// ACTIVE OPERATIONS</div>
+      <h2 class="section__title">TOURNAMENTS</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card__badge">LIVE</div>
+          <h3 class="card__title">Deathmatch Open</h3>
+          <p class="card__desc">Free-for-all chaos. Last player standing takes the crown.</p>
+          <div class="card__meta">
+            <span>64 Players</span>
+            <span>Jun 28, 2026</span>
+          </div>
+          <a href="#" class="card__link">Join Operation →</a>
+        </article>
+        <article class="card card--featured">
+          <div class="card__badge card__badge--gold">FEATURED</div>
+          <h3 class="card__title">Team Elimination</h3>
+          <p class="card__desc">5v5 tactical warfare. Coordinate, strategize, dominate.</p>
+          <div class="card__meta">
+            <span>32 Teams</span>
+            <span>Jul 5, 2026</span>
+          </div>
+          <a href="#" class="card__link">Join Operation →</a>
+        </article>
+        <article class="card">
+          <div class="card__badge">UPCOMING</div>
+          <h3 class="card__title">Capture The Flag</h3>
+          <p class="card__desc">Classic objective mode. Secure the flag, secure victory.</p>
+          <div class="card__meta">
+            <span>16 Teams</span>
+            <span>Jul 12, 2026</span>
+          </div>
+          <a href="#" class="card__link">Join Operation →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register CTA -->
+  <section class="section section--register" id="register">
+    <div class="container">
+      <h2 class="section__title section__title--center">READY TO DEPLOY?</h2>
+      <p class="section__text section__text--center">Register your team now. Slots are limited.</p>
+      <form class="register-form" onsubmit="return false;">
+        <input type="text" placeholder="Team Name" class="register-form__input" />
+        <input type="email" placeholder="Email Address" class="register-form__input" />
+        <button type="submit" class="hero__btn hero__btn--form">
+          <span>DEPLOY NOW</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Half-Life Tournament. All rights reserved.</p>
+  </footer>
+  </div>
+
+  <div class="lightbox" id="teamLightbox" hidden>
+    <div class="lightbox__backdrop" data-close-lightbox></div>
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+      <button type="button" class="lightbox__close" data-close-lightbox aria-label="Close">&times;</button>
+      <div class="lightbox__frame">
+        <img class="lightbox__image" src="" alt="" />
+      </div>
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
