@@ -30,10 +30,12 @@
         <span class="nav__logo-text">HALF-LIFE<br /><small>TOURNAMENT</small></span>
       </a>
       <nav class="nav__links">
+        <a href="#hero">Home</a>
         <a href="#countdown">Countdown</a>
+        <a href="#teams">Teams</a>
+        <a href="#players">Players</a>
         <a href="#tournaments">Tournaments</a>
-        <a href="#leaderboard">Leaderboard</a>
-        <a href="#register" class="nav__cta">Register</a>
+        <a href="#" class="nav__cta" id="claimGiftBtn">Claim Gift</a>
       </nav>
       <button class="nav__burger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -130,58 +132,577 @@
     </div>
   </section>
 
+  <!-- Teams -->
+  <section class="section section--teams" id="teams">
+    <div class="container">
+      <div class="section__label">// COMBAT UNITS</div>
+      <h2 class="section__title">TEAMS</h2>
+      <div class="teams-slider" id="teamsSlider" aria-roledescription="carousel" aria-label="Registered teams">
+        <div class="teams-slider__viewport">
+          <div class="teams-slider__track"></div>
+        </div>
+        <div class="teams-slider__controls">
+          <button type="button" class="teams-slider__arrow teams-slider__arrow--prev" aria-label="Previous team">&lsaquo;</button>
+          <div class="teams-slider__dots" role="tablist" aria-label="Select team"></div>
+          <button type="button" class="teams-slider__arrow teams-slider__arrow--next" aria-label="Next team">&rsaquo;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Players -->
+  <section class="section section--players" id="players">
+    <div class="container">
+      <div class="section__label">// OPERATORS ON THE FIELD</div>
+      <h2 class="section__title">PLAYERS</h2>
+      <div class="players-ranks">
+        <!-- Rank S -->
+        <section class="players-rank">
+          <header class="players-rank__header">
+            <span class="players-rank__badge players-rank__badge--s">RANK S</span>
+            <p class="players-rank__desc">The most elite warriors.</p>
+          </header>
+          <div class="players-grid">
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="ShadowFox avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="ShadowFox profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Nguyễn Minh Khôi</p>
+                    <p class="player-card__tooltip-nick">ShadowFox</p>
+                    <p class="player-card__tooltip-slogan">"Không nhìn thấy, không thể bắn."</p>
+                    <p class="player-card__tooltip-intro">
+                      Chuyên chơi role lurker, thích kiểm soát map và xuất hiện ở những góc không ai ngờ tới.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">ShadowFox</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="NovaKing avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="NovaKing profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Trần Quang Hưng</p>
+                    <p class="player-card__tooltip-nick">NovaKing</p>
+                    <p class="player-card__tooltip-slogan">"Một quả nade thay đổi round đấu."</p>
+                    <p class="player-card__tooltip-intro">
+                      Entry fragger với aim ổn định, luôn là người mở đường đầu tiên cho team trong mọi tình huống.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">NovaKing</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="GhostRider avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="GhostRider profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Lê Hoài Phong</p>
+                    <p class="player-card__tooltip-nick">GhostRider</p>
+                    <p class="player-card__tooltip-slogan">"Im lặng nhưng chí mạng."</p>
+                    <p class="player-card__tooltip-intro">
+                      Sniper chính của team, luôn chọn vị trí bất ngờ và giữ góc cực kỳ kiên nhẫn.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">GhostRider</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="SteelHeart avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="SteelHeart profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Phạm Thanh Tùng</p>
+                    <p class="player-card__tooltip-nick">SteelHeart</p>
+                    <p class="player-card__tooltip-slogan">"Không tilt, không thua."</p>
+                    <p class="player-card__tooltip-intro">
+                      In-game leader bình tĩnh, call chiến thuật rõ ràng và giữ tinh thần cả đội luôn ổn định.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">SteelHeart</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Rank A -->
+        <section class="players-rank">
+          <header class="players-rank__header">
+            <span class="players-rank__badge players-rank__badge--a">RANK A</span>
+            <p class="players-rank__desc">The most dependable right-hands.</p>
+          </header>
+          <div class="players-grid">
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Blaze avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Blaze profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Đỗ Minh Đức</p>
+                    <p class="player-card__tooltip-nick">Blaze</p>
+                    <p class="player-card__tooltip-slogan">"Spray control là nghệ thuật."</p>
+                    <p class="player-card__tooltip-intro">
+                      Rifler đa năng, có thể vừa giữ site vừa hỗ trợ rotate cực nhanh cho đồng đội.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Blaze</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="FrostByte avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="FrostByte profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Nguyễn Hải Anh</p>
+                    <p class="player-card__tooltip-nick">FrostByte</p>
+                    <p class="player-card__tooltip-slogan">"Giữ góc lạnh như băng."</p>
+                    <p class="player-card__tooltip-intro">
+                      Chuyên thủ site, cực khó bị outplay trong các tình huống retake hoặc hold bombsite.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">FrostByte</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Viper avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Viper profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Lý Thu Ngân</p>
+                    <p class="player-card__tooltip-nick">Viper</p>
+                    <p class="player-card__tooltip-slogan">"Toxic trong game, thân thiện ngoài đời."</p>
+                    <p class="player-card__tooltip-intro">
+                      Support đúng nghĩa, luôn để ý economy, drop súng và cover flash cho cả đội.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Viper</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="NightWolf avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="NightWolf profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Vũ Hoàng Sơn</p>
+                    <p class="player-card__tooltip-nick">NightWolf</p>
+                    <p class="player-card__tooltip-slogan">"Push sớm hoặc chết sớm."</p>
+                    <p class="player-card__tooltip-intro">
+                      Thích đẩy sớm, tạo áp lực map, luôn đem lại thông tin quan trọng cho team.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">NightWolf</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Rank B -->
+        <section class="players-rank">
+          <header class="players-rank__header">
+            <span class="players-rank__badge players-rank__badge--b">RANK B</span>
+            <p class="players-rank__desc">The silent warriors.</p>
+          </header>
+          <div class="players-grid">
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Pulse avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Pulse profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Trịnh Nhật Long</p>
+                    <p class="player-card__tooltip-nick">Pulse</p>
+                    <p class="player-card__tooltip-slogan">"Timing là vũ khí mạnh nhất."</p>
+                    <p class="player-card__tooltip-intro">
+                      Thường xuyên tận dụng timing để backstab đối thủ trong các tình huống quan trọng.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Pulse</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Echo avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Echo profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Phan Thanh Bình</p>
+                    <p class="player-card__tooltip-nick">Echo</p>
+                    <p class="player-card__tooltip-slogan">"Call gì cũng nghe, bắn gì cũng ổn."</p>
+                    <p class="player-card__tooltip-intro">
+                      Player cân bằng giữa aim và game sense, phù hợp với nhiều vai trò khác nhau trong team.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Echo</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Raven avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Raven profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Ngô Bảo Châu</p>
+                    <p class="player-card__tooltip-nick">Raven</p>
+                    <p class="player-card__tooltip-slogan">"Từ từ rồi cũng headshot."</p>
+                    <p class="player-card__tooltip-intro">
+                      Thích chơi chậm, clear từng góc kỹ lưỡng trước khi vào site cùng đồng đội.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Raven</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Bolt avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Bolt profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Lâm Hoàng Duy</p>
+                    <p class="player-card__tooltip-nick">Bolt</p>
+                    <p class="player-card__tooltip-slogan">"Nade nổ xong là anh xuất hiện."</p>
+                    <p class="player-card__tooltip-intro">
+                      Entry phụ, chuyên follow flash và nade của đồng đội để trade kill nhanh chóng.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Bolt</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Rank C -->
+        <section class="players-rank">
+          <header class="players-rank__header">
+            <span class="players-rank__badge players-rank__badge--c">RANK C</span>
+            <p class="players-rank__desc">The suicide bomb carriers.</p>
+          </header>
+          <div class="players-grid">
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="RookieOne avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="RookieOne profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Hoàng Đức Lộc</p>
+                    <p class="player-card__tooltip-nick">RookieOne</p>
+                    <p class="player-card__tooltip-slogan">"Mới chơi nhưng không ngán ai."</p>
+                    <p class="player-card__tooltip-intro">
+                      Tuy mới vào game nhưng rất chịu khó học hỏi, luôn xem demo và hỏi kinh nghiệm senior.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">RookieOne</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="Pixel avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="Pixel profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Đinh Mai Hương</p>
+                    <p class="player-card__tooltip-nick">Pixel</p>
+                    <p class="player-card__tooltip-slogan">"Miss shot nhưng không miss fun."</p>
+                    <p class="player-card__tooltip-intro">
+                      Mang lại tiếng cười cho cả đội, không ngại thử những pha highlight hài hước trong game.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">Pixel</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="ZeroLag avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="ZeroLag profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Mai Chí Thành</p>
+                    <p class="player-card__tooltip-nick">ZeroLag</p>
+                    <p class="player-card__tooltip-slogan">"Ping cao nhưng tâm không rung."</p>
+                    <p class="player-card__tooltip-intro">
+                      Thường xuyên chơi từ remote, ping hơi cao nhưng aim vẫn rất ổn định.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">ZeroLag</p>
+            </article>
+            <article class="player-card">
+              <div class="player-card__avatar-wrap">
+                <img src="assets/team-placeholder.svg" alt="LuckyShot avatar" class="player-card__avatar" />
+                <div class="player-card__tooltip">
+                  <div class="player-card__tooltip-image">
+                    <img src="assets/team-placeholder.svg" alt="LuckyShot profile" />
+                  </div>
+                  <div class="player-card__tooltip-info">
+                    <p class="player-card__tooltip-name">Trương Ngọc Trí</p>
+                    <p class="player-card__tooltip-nick">LuckyShot</p>
+                    <p class="player-card__tooltip-slogan">"Không aim nhiều, chủ yếu hên."</p>
+                    <p class="player-card__tooltip-intro">
+                      Thường xuyên có những pha one-tap khó tin, cả team đều tin là nhờ nhân phẩm.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="player-card__nick">LuckyShot</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
   <!-- Tournaments -->
   <section class="section section--tournaments" id="tournaments">
     <div class="container">
       <div class="section__label">// ACTIVE OPERATIONS</div>
       <h2 class="section__title">TOURNAMENTS</h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card__badge">LIVE</div>
-          <h3 class="card__title">Deathmatch Open</h3>
-          <p class="card__desc">Free-for-all chaos. Last player standing takes the crown.</p>
-          <div class="card__meta">
-            <span>64 Players</span>
-            <span>Jun 28, 2026</span>
+      <div class="tournament-chart">
+        <div class="tournament-chart__meta">
+          <div class="tournament-chart__rule">
+            <span class="tournament-chart__rule-label">FORMAT</span>
+            <span class="tournament-chart__rule-value">Round-robin group stage (5 teams)</span>
           </div>
-          <a href="#" class="card__link">Join Operation →</a>
-        </article>
-        <article class="card card--featured">
-          <div class="card__badge card__badge--gold">FEATURED</div>
-          <h3 class="card__title">Team Elimination</h3>
-          <p class="card__desc">5v5 tactical warfare. Coordinate, strategize, dominate.</p>
-          <div class="card__meta">
-            <span>32 Teams</span>
-            <span>Jul 5, 2026</span>
+          <div class="tournament-chart__rule">
+            <span class="tournament-chart__rule-label">GROUP STAGE</span>
+            <span class="tournament-chart__rule-value">Each team plays every other team once</span>
           </div>
-          <a href="#" class="card__link">Join Operation →</a>
-        </article>
-        <article class="card">
-          <div class="card__badge">UPCOMING</div>
-          <h3 class="card__title">Capture The Flag</h3>
-          <p class="card__desc">Classic objective mode. Secure the flag, secure victory.</p>
-          <div class="card__meta">
-            <span>16 Teams</span>
-            <span>Jul 12, 2026</span>
+          <div class="tournament-chart__rule">
+            <span class="tournament-chart__rule-label">FINALS</span>
+            <span class="tournament-chart__rule-value">Top 2 teams by points battle for #1 / #2</span>
           </div>
-          <a href="#" class="card__link">Join Operation →</a>
-        </article>
+        </div>
+
+        <div class="tournament-chart__grid" role="list" aria-label="Round-robin match chart">
+          <article class="tournament-round" role="listitem">
+            <header class="tournament-round__header">
+              <span class="tournament-round__badge">ROUND 1</span>
+              <span class="tournament-round__time">Group Stage</span>
+            </header>
+            <div class="tournament-round__matches">
+              <div class="match">
+                <span class="match__team">Lambda Squad</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Crowbar Elite</span>
+              </div>
+              <div class="match">
+                <span class="match__team">Black Mesa Raiders</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Xen Strike Force</span>
+              </div>
+              <div class="match match--bye">
+                <span class="match__team">HECU Vanguard</span>
+                <span class="match__vs">BYE</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tournament-round" role="listitem">
+            <header class="tournament-round__header">
+              <span class="tournament-round__badge">ROUND 2</span>
+              <span class="tournament-round__time">Group Stage</span>
+            </header>
+            <div class="tournament-round__matches">
+              <div class="match">
+                <span class="match__team">Lambda Squad</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Xen Strike Force</span>
+              </div>
+              <div class="match">
+                <span class="match__team">HECU Vanguard</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Crowbar Elite</span>
+              </div>
+              <div class="match match--bye">
+                <span class="match__team">Black Mesa Raiders</span>
+                <span class="match__vs">BYE</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tournament-round" role="listitem">
+            <header class="tournament-round__header">
+              <span class="tournament-round__badge">ROUND 3</span>
+              <span class="tournament-round__time">Group Stage</span>
+            </header>
+            <div class="tournament-round__matches">
+              <div class="match">
+                <span class="match__team">Lambda Squad</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Black Mesa Raiders</span>
+              </div>
+              <div class="match">
+                <span class="match__team">HECU Vanguard</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Xen Strike Force</span>
+              </div>
+              <div class="match match--bye">
+                <span class="match__team">Crowbar Elite</span>
+                <span class="match__vs">BYE</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tournament-round" role="listitem">
+            <header class="tournament-round__header">
+              <span class="tournament-round__badge">ROUND 4</span>
+              <span class="tournament-round__time">Group Stage</span>
+            </header>
+            <div class="tournament-round__matches">
+              <div class="match">
+                <span class="match__team">Lambda Squad</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">HECU Vanguard</span>
+              </div>
+              <div class="match">
+                <span class="match__team">Crowbar Elite</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Xen Strike Force</span>
+              </div>
+              <div class="match match--bye">
+                <span class="match__team">Black Mesa Raiders</span>
+                <span class="match__vs">BYE</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tournament-round" role="listitem">
+            <header class="tournament-round__header">
+              <span class="tournament-round__badge">ROUND 5</span>
+              <span class="tournament-round__time">Group Stage</span>
+            </header>
+            <div class="tournament-round__matches">
+              <div class="match">
+                <span class="match__team">Black Mesa Raiders</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Crowbar Elite</span>
+              </div>
+              <div class="match">
+                <span class="match__team">HECU Vanguard</span>
+                <span class="match__vs">VS</span>
+                <span class="match__team">Xen Strike Force</span>
+              </div>
+              <div class="match match--bye">
+                <span class="match__team">Lambda Squad</span>
+                <span class="match__vs">BYE</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="tournament-finals" aria-label="Finals">
+          <div class="tournament-finals__header">
+            <span class="tournament-finals__badge">FINALS</span>
+            <span class="tournament-finals__desc">Top 2 teams after group stage</span>
+          </div>
+          <div class="tournament-finals__match">
+            <span class="match__team match__team--seed">#1 Seed</span>
+            <span class="match__vs match__vs--warm">VS</span>
+            <span class="match__team match__team--seed">#2 Seed</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Register CTA -->
+  <!-- Register -->
   <section class="section section--register" id="register">
     <div class="container">
-      <h2 class="section__title section__title--center">READY TO DEPLOY?</h2>
-      <p class="section__text section__text--center">Register your team now. Slots are limited.</p>
-      <form class="register-form" onsubmit="return false;">
-        <input type="text" placeholder="Team Name" class="register-form__input" />
-        <input type="email" placeholder="Email Address" class="register-form__input" />
-        <button type="submit" class="hero__btn hero__btn--form">
-          <span>DEPLOY NOW</span>
+      <h2 class="section__title section__title--center">DO YOU WANT TO BET?</h2>
+      <p class="section__text section__text--center">Submit your information here, and we will contact you as soon as the betting markets are available.</p>
+      <form class="register-form" id="registerForm" novalidate>
+        <div class="register-form__field">
+          <input
+            type="text"
+            id="registerName"
+            name="name"
+            placeholder="Your Name"
+            class="register-form__input"
+            autocomplete="name"
+          />
+          <p class="register-form__error" id="registerNameError" hidden></p>
+        </div>
+        <div class="register-form__field">
+          <input
+            type="email"
+            id="registerEmail"
+            name="email"
+            placeholder="Email Address"
+            class="register-form__input"
+            autocomplete="email"
+          />
+          <p class="register-form__error" id="registerEmailError" hidden></p>
+        </div>
+        <button type="button" id="registerSubmitBtn" class="hero__btn hero__btn--form">
+          <span>SUBMIT NOW</span>
         </button>
       </form>
+
+      <div class="message-box message-box--register">
+        <span class="message-box__corner message-box__corner--tl" aria-hidden="true"></span>
+        <span class="message-box__corner message-box__corner--tr" aria-hidden="true"></span>
+        <span class="message-box__corner message-box__corner--bl" aria-hidden="true"></span>
+        <span class="message-box__corner message-box__corner--br" aria-hidden="true"></span>
+        <p class="message-box__label">// FINAL TRANSMISSION</p>
+        <blockquote class="message-box__quote">
+          To every warrior stepping into this arena: trust your squad, sharpen your reflexes,
+          and fight with honor until the very last second. Win or lose, give everything you have
+          on the battlefield — that is what defines a true operator. Wishing all players a fierce,
+          fair, and unforgettable tournament. Good luck, and see you in the server.
+        </blockquote>
+        <p class="message-box__sign">— Half-Life Tournament Command</p>
+      </div>
     </div>
   </section>
 
@@ -198,6 +719,39 @@
         <img class="lightbox__image" src="" alt="" />
       </div>
       <p class="lightbox__caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <div class="video-popup" id="giftVideoPopup" hidden>
+    <div class="video-popup__backdrop" data-close-video></div>
+    <div class="video-popup__dialog" role="dialog" aria-modal="true" aria-label="Claim Gift video">
+      <button type="button" class="video-popup__close" data-close-video aria-label="Close">&times;</button>
+      <div class="video-popup__frame">
+        <video class="video-popup__player" controls playsinline>
+          <source src="assets/gift-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-popup" id="submitPopup" hidden>
+    <div class="submit-popup__backdrop" data-close-submit></div>
+    <div class="submit-popup__dialog" role="dialog" aria-modal="true" aria-label="Submit confirmation">
+      <button type="button" class="submit-popup__close" data-close-submit aria-label="Close">&times;</button>
+      <div class="submit-popup__frame">
+        <img class="submit-popup__image" src="assets/submit-meme.png" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <audio id="submitAudio" src="assets/submit-audio.mp3" preload="auto"></audio>
+  <div class="submit-lock" id="submitLock" hidden aria-hidden="true"></div>
+  <div class="submit-toast" id="submitToast" role="alert" hidden>
+    <p class="submit-toast__text">
+      Đã phát hiện người dùng có ý định cá cược. Vui lòng tới cơ quan công an gần nhất để đầu thú.
+    </p>
+    <div class="submit-toast__progress" aria-hidden="true">
+      <span class="submit-toast__progress-bar" id="submitToastProgress"></span>
     </div>
   </div>
 
