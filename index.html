@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DU10 Half-Life Tournament</title>
+  <title>Half-Life Tournament</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -168,145 +168,59 @@
         <div class="tournament-chart__meta">
           <div class="tournament-chart__rule">
             <span class="tournament-chart__rule-label">FORMAT</span>
-            <span class="tournament-chart__rule-value">Round-robin group stage (5 teams)</span>
+            <span class="tournament-chart__rule-value">Double round-robin group stage (5 teams, 10 rounds)</span>
           </div>
           <div class="tournament-chart__rule">
             <span class="tournament-chart__rule-label">GROUP STAGE</span>
-            <span class="tournament-chart__rule-value">Each team plays every other team once</span>
+            <span class="tournament-chart__rule-value">Each team plays every other team home &amp; away</span>
           </div>
           <div class="tournament-chart__rule">
-            <span class="tournament-chart__rule-label">FINALS</span>
-            <span class="tournament-chart__rule-value">Top 2 teams by points battle for #1 / #2</span>
+            <span class="tournament-chart__rule-label">KNOCKOUT</span>
+            <span class="tournament-chart__rule-value">Top 4 advance — #1 vs #4, #3 vs #2, then Grand Final</span>
           </div>
         </div>
 
-        <div class="tournament-chart__grid" role="list" aria-label="Round-robin match chart">
-          <article class="tournament-round" role="listitem">
-            <header class="tournament-round__header">
-              <span class="tournament-round__badge">ROUND 1</span>
-              <span class="tournament-round__time">Group Stage</span>
-            </header>
-            <div class="tournament-round__matches">
-              <div class="match">
-                <span class="match__team">Smurf Legion</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">Bụi 3</span>
-              </div>
-              <div class="match">
-                <span class="match__team">Infinity</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">404</span>
-              </div>
-              <div class="match match--bye">
-                <span class="match__team">HTS</span>
-                <span class="match__vs">BYE</span>
-              </div>
-            </div>
-          </article>
+        <div class="tournament-chart__grid" id="tournamentGroupGrid" role="list" aria-label="Group stage match chart"></div>
 
-          <article class="tournament-round" role="listitem">
-            <header class="tournament-round__header">
-              <span class="tournament-round__badge">ROUND 2</span>
-              <span class="tournament-round__time">Group Stage</span>
-            </header>
-            <div class="tournament-round__matches">
-              <div class="match">
-                <span class="match__team">Smurf Legion</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">404</span>
-              </div>
-              <div class="match">
-                <span class="match__team">HTS</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">Bụi 3</span>
-              </div>
-              <div class="match match--bye">
-                <span class="match__team">Infinity</span>
-                <span class="match__vs">BYE</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="tournament-round" role="listitem">
-            <header class="tournament-round__header">
-              <span class="tournament-round__badge">ROUND 3</span>
-              <span class="tournament-round__time">Group Stage</span>
-            </header>
-            <div class="tournament-round__matches">
-              <div class="match">
-                <span class="match__team">Smurf Legion</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">Infinity</span>
-              </div>
-              <div class="match">
-                <span class="match__team">HTS</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">404</span>
-              </div>
-              <div class="match match--bye">
-                <span class="match__team">Bụi 3</span>
-                <span class="match__vs">BYE</span>
+        <div class="tournament-knockout" aria-label="Knockout stage">
+          <header class="tournament-knockout__header">
+            <span class="tournament-knockout__badge">KNOCKOUT STAGE</span>
+            <span class="tournament-knockout__desc">Top 4 teams by group stage points</span>
+          </header>
+          <div class="tournament-knockout__grid">
+            <div class="tournament-knockout__block">
+              <h3 class="tournament-knockout__label">Semifinals</h3>
+              <div class="tournament-knockout__matches">
+                <div class="match">
+                  <span class="match__team match__team--seed">#1 Seed</span>
+                  <span class="match__vs match__vs--warm">VS</span>
+                  <span class="match__team match__team--seed">#4 Seed</span>
+                </div>
+                <div class="match">
+                  <span class="match__team match__team--seed">#3 Seed</span>
+                  <span class="match__vs match__vs--warm">VS</span>
+                  <span class="match__team match__team--seed">#2 Seed</span>
+                </div>
               </div>
             </div>
-          </article>
-
-          <article class="tournament-round" role="listitem">
-            <header class="tournament-round__header">
-              <span class="tournament-round__badge">ROUND 4</span>
-              <span class="tournament-round__time">Group Stage</span>
-            </header>
-            <div class="tournament-round__matches">
-              <div class="match">
-                <span class="match__team">Smurf Legion</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">HTS</span>
-              </div>
-              <div class="match">
-                <span class="match__team">Bụi 3</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">404</span>
-              </div>
-              <div class="match match--bye">
-                <span class="match__team">Infinity</span>
-                <span class="match__vs">BYE</span>
+            <div class="tournament-knockout__block tournament-knockout__block--final">
+              <h3 class="tournament-knockout__label">Grand Final</h3>
+              <div class="tournament-knockout__matches">
+                <div class="match tournament-knockout__final-match">
+                  <span class="match__team match__team--seed">SF Winner</span>
+                  <span class="match__vs match__vs--warm">VS</span>
+                  <span class="match__team match__team--seed">SF Winner</span>
+                </div>
               </div>
             </div>
-          </article>
-
-          <article class="tournament-round" role="listitem">
-            <header class="tournament-round__header">
-              <span class="tournament-round__badge">ROUND 5</span>
-              <span class="tournament-round__time">Group Stage</span>
-            </header>
-            <div class="tournament-round__matches">
-              <div class="match">
-                <span class="match__team">Infinity</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">Bụi 3</span>
-              </div>
-              <div class="match">
-                <span class="match__team">HTS</span>
-                <span class="match__vs">VS</span>
-                <span class="match__team">404</span>
-              </div>
-              <div class="match match--bye">
-                <span class="match__team">Smurf Legion</span>
-                <span class="match__vs">BYE</span>
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
 
-        <div class="tournament-finals" aria-label="Finals">
-          <div class="tournament-finals__header">
-            <span class="tournament-finals__badge">FINALS</span>
-            <span class="tournament-finals__desc">Top 2 teams after group stage</span>
-          </div>
-          <div class="tournament-finals__match">
-            <span class="match__team match__team--seed">#1 Seed</span>
-            <span class="match__vs match__vs--warm">VS</span>
-            <span class="match__team match__team--seed">#2 Seed</span>
-          </div>
+        <div class="tournament-rules" aria-label="Tournament rules">
+          <header class="tournament-rules__header">
+            <span class="tournament-rules__badge">TOURNAMENT RULES</span>
+          </header>
+          <p class="tournament-rules__placeholder">Will update soon.</p>
         </div>
       </div>
     </div>

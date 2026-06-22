@@ -586,6 +586,138 @@ function initPlayerRadarCharts() {
 initPlayersSection();
 initPlayerRadarCharts();
 
+const tournamentGroupRounds = [
+  {
+    round: 1,
+    leg: 'First Leg',
+    matches: [
+      { home: 'Smurf Legion', away: '404' },
+      { home: 'Infinity', away: 'Bụi 3' },
+    ],
+    skip: 'HTS',
+  },
+  {
+    round: 2,
+    leg: 'First Leg',
+    matches: [
+      { home: 'HTS', away: 'Smurf Legion' },
+      { home: '404', away: 'Infinity' },
+    ],
+    skip: 'Bụi 3',
+  },
+  {
+    round: 3,
+    leg: 'First Leg',
+    matches: [
+      { home: 'Bụi 3', away: 'HTS' },
+      { home: 'Smurf Legion', away: 'Infinity' },
+    ],
+    skip: '404',
+  },
+  {
+    round: 4,
+    leg: 'First Leg',
+    matches: [
+      { home: '404', away: 'Bụi 3' },
+      { home: 'Infinity', away: 'HTS' },
+    ],
+    skip: 'Smurf Legion',
+  },
+  {
+    round: 5,
+    leg: 'First Leg',
+    matches: [
+      { home: 'Bụi 3', away: 'Smurf Legion' },
+      { home: 'HTS', away: '404' },
+    ],
+    skip: 'Infinity',
+  },
+  {
+    round: 6,
+    leg: 'Return Leg',
+    matches: [
+      { home: '404', away: 'Smurf Legion' },
+      { home: 'Bụi 3', away: 'Infinity' },
+    ],
+    skip: 'HTS',
+  },
+  {
+    round: 7,
+    leg: 'Return Leg',
+    matches: [
+      { home: 'Smurf Legion', away: 'HTS' },
+      { home: 'Infinity', away: '404' },
+    ],
+    skip: 'Bụi 3',
+  },
+  {
+    round: 8,
+    leg: 'Return Leg',
+    matches: [
+      { home: 'HTS', away: 'Bụi 3' },
+      { home: 'Infinity', away: 'Smurf Legion' },
+    ],
+    skip: '404',
+  },
+  {
+    round: 9,
+    leg: 'Return Leg',
+    matches: [
+      { home: 'Bụi 3', away: '404' },
+      { home: 'HTS', away: 'Infinity' },
+    ],
+    skip: 'Smurf Legion',
+  },
+  {
+    round: 10,
+    leg: 'Return Leg',
+    matches: [
+      { home: 'Smurf Legion', away: 'Bụi 3' },
+      { home: '404', away: 'HTS' },
+    ],
+    skip: 'Infinity',
+  },
+];
+
+function renderTournamentRound(roundData) {
+  const matchesHtml = roundData.matches.map((match) => `
+    <div class="match">
+      <span class="match__team">${match.home}</span>
+      <span class="match__vs">VS</span>
+      <span class="match__team">${match.away}</span>
+    </div>
+  `).join('');
+
+  const skipHtml = roundData.skip ? `
+    <div class="match match--bye">
+      <span class="match__team">${roundData.skip}</span>
+      <span class="match__vs">SKIP</span>
+    </div>
+  ` : '';
+
+  return `
+    <article class="tournament-round" role="listitem">
+      <header class="tournament-round__header">
+        <span class="tournament-round__badge">ROUND ${roundData.round}</span>
+        <span class="tournament-round__time">${roundData.leg}</span>
+      </header>
+      <div class="tournament-round__matches">
+        ${matchesHtml}
+        ${skipHtml}
+      </div>
+    </article>
+  `;
+}
+
+function initTournamentChart() {
+  const grid = document.getElementById('tournamentGroupGrid');
+  if (!grid) return;
+
+  grid.innerHTML = tournamentGroupRounds.map(renderTournamentRound).join('');
+}
+
+initTournamentChart();
+
 function initRegisterForm() {
   const form = document.getElementById('registerForm');
   const submitBtn = document.getElementById('registerSubmitBtn');
