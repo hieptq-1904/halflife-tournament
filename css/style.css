@@ -988,6 +988,17 @@ img {
   gap: 1.75rem;
 }
 
+.players-grid--centered {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.players-grid--centered .player-card {
+  flex: 0 0 calc((100% - 3 * 1.75rem) / 4);
+  max-width: calc((100% - 3 * 1.75rem) / 4);
+}
+
 .player-card {
   text-align: center;
 }
@@ -1025,11 +1036,13 @@ img {
   top: 50%;
   transform: translateY(-50%) translateX(8px);
   z-index: 30;
-  display: flex;
-  gap: 1rem;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.75rem 1rem;
+  align-items: start;
   min-width: 360px;
-  max-width: 460px;
+  max-width: 520px;
   padding: 0.9rem;
   background: rgba(10, 14, 22, 0.96);
   border: 1px solid rgba(0, 212, 255, 0.35);
@@ -1051,6 +1064,8 @@ img {
 }
 
 .player-card__tooltip-image {
+  grid-row: 1;
+  grid-column: 1;
   flex: 0 0 auto;
   height: 100%;
   aspect-ratio: 1 / 1;
@@ -1068,6 +1083,8 @@ img {
 }
 
 .player-card__tooltip-info {
+  grid-row: 1;
+  grid-column: 2;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1097,6 +1114,54 @@ img {
   margin-top: 0.25rem;
   font-size: 0.8rem;
   color: var(--color-muted);
+}
+
+.player-card__tooltip-chart {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.15rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.12);
+}
+
+.player-radar {
+  display: block;
+  width: 190px;
+  height: 190px;
+  overflow: visible;
+}
+
+.player-radar__grid {
+  fill: none;
+  stroke: rgba(0, 212, 255, 0.14);
+  stroke-width: 1;
+}
+
+.player-radar__axis {
+  stroke: rgba(0, 212, 255, 0.22);
+  stroke-width: 1;
+}
+
+.player-radar__shape {
+  fill: rgba(255, 140, 66, 0.28);
+  stroke: var(--color-accent-warm);
+  stroke-width: 1.5;
+}
+
+.player-radar__dot {
+  fill: var(--color-accent-warm);
+}
+
+.player-radar__label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--color-accent-warm);
+  letter-spacing: 0.02em;
 }
 
 .player-card__avatar-wrap:hover .player-card__tooltip {
@@ -2085,6 +2150,15 @@ body.is-submit-locked {
 
   .players-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .players-grid--centered {
+    flex-wrap: wrap;
+  }
+
+  .players-grid--centered .player-card {
+    flex: 0 0 calc((100% - 1.75rem) / 2);
+    max-width: calc((100% - 1.75rem) / 2);
   }
 
   .player-card__tooltip {

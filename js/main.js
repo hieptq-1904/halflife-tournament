@@ -1,40 +1,38 @@
-const TEAM_PLACEHOLDER = 'assets/team-placeholder.svg';
-
 const teams = [
   {
-    name: 'Lambda Squad',
-    image: TEAM_PLACEHOLDER,
-    detailUrl: '#teams/lambda-squad',
-    slogan: 'Resonance cascade — không ai quay đầu',
-    members: ['Nguyễn Minh Tuấn', 'Trần Đức Anh', 'Lê Hoàng Nam'],
+    name: 'Smurf Legion',
+    image: 'assets/team-1.png',
+    detailUrl: '#teams/smurf-legion',
+    slogan: 'Born to dominate',
+    members: ['Vũ Đình Cường', 'Hàn Văn Huy', 'Trần Quang Hiệp'],
   },
   {
-    name: 'Black Mesa Raiders',
-    image: TEAM_PLACEHOLDER,
-    detailUrl: '#teams/black-mesa-raiders',
-    slogan: 'Black Mesa không bao giờ ngủ',
-    members: ['Phạm Quốc Huy', 'Võ Thành Đạt', 'Bùi Minh Khang'],
+    name: 'Infinity',
+    image: 'assets/team-2.png',
+    detailUrl: '#teams/infinity',
+    slogan: 'No Pain, No gain',
+    members: ['Trần Văn Mỹ', 'Nguyễn Mạnh Tiến', 'Nguyễn Thanh Long'],
   },
   {
-    name: 'HECU Vanguard',
-    image: TEAM_PLACEHOLDER,
-    detailUrl: '#teams/hecu-vanguard',
-    slogan: 'Tiên phong — quyết thắng',
-    members: ['Đặng Văn Phong', 'Nguyễn Thị Mai', 'Trương Bảo Long'],
+    name: 'HTS',
+    image: 'assets/team-3.png',
+    detailUrl: '#teams/hts',
+    slogan: 'One Tap, No Talk',
+    members: ['Lê Văn Hội', 'Nguyễn Văn Thành', 'Nguyễn Đình Phước Sơn'],
   },
   {
-    name: 'Xen Strike Force',
-    image: TEAM_PLACEHOLDER,
-    detailUrl: '#teams/xen-strike-force',
-    slogan: 'Vượt qua portal, không giới hạn',
-    members: ['Hoàng Gia Bảo', 'Đinh Quang Minh', 'Nguyễn Hữu Kiện'],
+    name: '404',
+    image: 'assets/team-4.png',
+    detailUrl: '#teams/404',
+    slogan: 'No Trace',
+    members: ['Đồng Xuân Đông', 'Nguyễn Công Khanh', 'Bùi Hữu Thắng'],
   },
   {
-    name: 'Crowbar Elite',
-    image: TEAM_PLACEHOLDER,
-    detailUrl: '#teams/crowbar-elite',
-    slogan: 'Crowbar giải quyết mọi thứ',
-    members: ['Lý Văn Tài', 'Phan Minh Đức', 'Vũ Thanh Tùng'],
+    name: 'Bụi 3',
+    image: 'assets/team-5.png',
+    detailUrl: '#teams/bui-3',
+    slogan: 'Sinh ra để cầm súng',
+    members: ['Hoàng Việt An', 'Vũ Việt Anh', 'Nguyễn Đức Việt'],
   },
 ];
 
@@ -182,23 +180,26 @@ function stopAutoplay() {
 function buildCarousel() {
   if (!trackEl) return;
 
-  trackEl.innerHTML = slides.map((slide, index) => `
+  trackEl.innerHTML = slides.map((slide, index) => {
+    const team = teams[index];
+    return `
     <button
       class="carousel__slide"
       data-index="${index}"
       data-border="${slide.border}"
-      aria-label="Slide ${index + 1}: ${slide.alt}"
+      aria-label="Slide ${index + 1}: ${team?.name || slide.alt}"
       style="z-index: ${index + 1}"
     >
       <div class="slide-card slide-card--${slide.border}">
         <div class="slide-card__border">
           <div class="slide-card__image">
-            <img loading="lazy" src="${slide.thumb}" alt="${slide.alt}" />
+            <img loading="lazy" src="${team?.image || slide.thumb}" alt="${team?.name || slide.alt}" />
           </div>
         </div>
       </div>
     </button>
-  `).join('');
+  `;
+  }).join('');
 
   slideEls = document.querySelectorAll('.carousel__slide');
 
@@ -294,6 +295,296 @@ initSubmitPopup();
 initRegisterForm();
 initNavSpy();
 initCountdown();
+
+const PLAYER_PLACEHOLDER = 'assets/team-placeholder.svg';
+
+function getPlayerImage(fullName) {
+  return `assets/players/${encodeURIComponent(fullName)}.png`;
+}
+
+const playersByRank = [
+  {
+    rank: 'S',
+    desc: 'The most elite warriors.',
+    players: [
+      {
+        ingame: 'Dong Tien Sinh',
+        fullName: 'Đồng Xuân Đông',
+        slogan: 'Bôi xấu đối thủ, ngủ với đối tác',
+        intro: 'Vũ Điệu Tử Thần',
+        stats: { skill: 5, tactics: 1, luck: 2, stealth: 2 },
+      },
+      {
+        ingame: 'Hoi Le',
+        fullName: 'Lê Văn Hội',
+        slogan: 'N/A',
+        intro: 'N/A',
+        stats: { skill: 4, tactics: 3, luck: 2, stealth: 2 },
+      },
+      {
+        ingame: 'zT_Tz',
+        fullName: 'Vũ Đình Cường',
+        slogan: 'Nỗi sợ hãi của đối thủ là niềm vui của bản thân.',
+        intro: 'Cao bồi miền Tây, bắn súng 2 tay, xì gà hút ngược.',
+        stats: { skill: 4, tactics: 2, luck: 3, stealth: 3 },
+      },
+      {
+        ingame: 'Thanh',
+        fullName: 'Nguyễn Văn Thành',
+        slogan: 'Just Thanh',
+        intro: 'N/A',
+        stats: { skill: 4, tactics: 2, luck: 2, stealth: 2 },
+      },
+    ],
+  },
+  {
+    rank: 'A',
+    desc: 'The most dependable right-hands.',
+    players: [
+      {
+        ingame: 'TH True milk',
+        fullName: 'Hàn Văn Huy',
+        slogan: 'Anh em vui vẻ là được',
+        intro: 'Bảng thành tính ấn tượng, chuyên gia bán độ. Ai có yêu cầu xin in bóc riêng nhá =))',
+        stats: { skill: 4, tactics: 1, luck: 2, stealth: 3 },
+      },
+      {
+        ingame: 'loc coc',
+        fullName: 'Hoàng Việt An',
+        slogan: 'Hiding....',
+        intro: 'Đố anh bắt được em',
+        stats: { skill: 3, tactics: 5, luck: 2, stealth: 5 },
+      },
+      {
+        ingame: 'Titanic',
+        fullName: 'Nguyễn Công Khanh',
+        slogan: 'Đi Tìm Niềm Vui',
+        intro: 'N/A',
+        stats: { skill: 4, tactics: 3, luck: 2, stealth: 4 },
+      },
+      {
+        ingame: 'Doan Chi Binh',
+        fullName: 'Trần Văn Mỹ',
+        slogan: 'Một phát vào đầu, bay màu trận đấu',
+        intro: 'Đơn giản là Pro',
+        stats: { skill: 3, tactics: 3, luck: 2, stealth: 4 },
+      },
+    ],
+  },
+  {
+    rank: 'B',
+    desc: 'The silent warriors.',
+    players: [
+      {
+        ingame: 'Khoi',
+        fullName: 'Vũ Việt Anh',
+        slogan: 'N/A',
+        intro: 'N/A',
+        stats: { skill: 3, tactics: 3, luck: 2, stealth: 3 },
+      },
+      {
+        ingame: 'Wick',
+        fullName: 'Nguyễn Mạnh Tiến',
+        slogan: 'N/A',
+        intro: 'N/A',
+        stats: { skill: 3, tactics: 3, luck: 2, stealth: 3 },
+      },
+      {
+        ingame: 'Bach_ho',
+        fullName: 'Nguyễn Đức Việt',
+        slogan: 'Đến là đón',
+        intro: 'Thích va chạm',
+        stats: { skill: 3, tactics: 2, luck: 2, stealth: 3 },
+      },
+      {
+        ingame: 'Tabu',
+        fullName: 'Bùi Hữu Thắng',
+        slogan: 'Cục ta cục tác',
+        intro: 'Bắn không thua ai nhưng gáy phải promax',
+        stats: { skill: 3, tactics: 2, luck: 4, stealth: 3 },
+      },
+    ],
+  },
+  {
+    rank: 'C',
+    desc: 'The suicide bomb carriers.',
+    players: [
+      {
+        ingame: 'RongXanh',
+        fullName: 'Nguyễn Thanh Long',
+        slogan: 'Rồng Xanh khạc lửa – Sấy ngửa kẻ thù',
+        intro: 'Rồng Xanh xứ Nghệ - Chất Nghệ kiên cường, sấy nát mọi chiến trường',
+        stats: { skill: 2, tactics: 1, luck: 3, stealth: 3 },
+      },
+      {
+        ingame: 'Nguoi Viet Trym Tay',
+        fullName: 'Trần Quang Hiệp',
+        slogan: 'One Shoot - One Kill',
+        intro: 'Trym to không lo chết đói',
+        stats: { skill: 2, tactics: 3, luck: 2, stealth: 4 },
+      },
+      {
+        ingame: 'Son_Chip_chip',
+        fullName: 'Nguyễn Đình Phước Sơn',
+        slogan: 'Quota 5 phút',
+        intro: 'Đẹp trai siêu cấp vũ trụ',
+        stats: { skill: 2, tactics: 1, luck: 5, stealth: 3 },
+      },
+    ],
+  },
+];
+
+const playerRadarStats = playersByRank.reduce((acc, rank) => {
+  rank.players.forEach((player) => {
+    acc[player.ingame] = player.stats;
+  });
+  return acc;
+}, {});
+
+function formatPlayerSlogan(slogan) {
+  if (!slogan || slogan === 'N/A') return 'N/A';
+  return `"${slogan}"`;
+}
+
+function renderPlayerCard(player) {
+  const avatar = getPlayerImage(player.fullName);
+  const slogan = formatPlayerSlogan(player.slogan);
+  const intro = player.intro === 'N/A' ? 'N/A' : player.intro;
+
+  return `
+    <article class="player-card">
+      <div class="player-card__avatar-wrap">
+        <img src="${avatar}" alt="${player.ingame} avatar" class="player-card__avatar" loading="lazy" onerror="this.onerror=null;this.src='${PLAYER_PLACEHOLDER}'" />
+        <div class="player-card__tooltip">
+          <div class="player-card__tooltip-image">
+            <img src="${avatar}" alt="${player.ingame} profile" loading="lazy" onerror="this.onerror=null;this.src='${PLAYER_PLACEHOLDER}'" />
+          </div>
+          <div class="player-card__tooltip-info">
+            <p class="player-card__tooltip-name">${player.fullName}</p>
+            <p class="player-card__tooltip-nick">${player.ingame}</p>
+            <p class="player-card__tooltip-slogan">${slogan}</p>
+            <p class="player-card__tooltip-intro">${intro}</p>
+          </div>
+        </div>
+      </div>
+      <p class="player-card__nick">${player.ingame}</p>
+    </article>
+  `;
+}
+
+function renderPlayersRank(rankData) {
+  const badgeClass = `players-rank__badge--${rankData.rank.toLowerCase()}`;
+
+  const gridClass = rankData.players.length < 4
+    ? 'players-grid players-grid--centered'
+    : 'players-grid';
+
+  return `
+    <section class="players-rank">
+      <header class="players-rank__header">
+        <span class="players-rank__badge ${badgeClass}">RANK ${rankData.rank}</span>
+        <p class="players-rank__desc">${rankData.desc}</p>
+      </header>
+      <div class="${gridClass}">
+        ${rankData.players.map(renderPlayerCard).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function initPlayersSection() {
+  const container = document.getElementById('playersRanks');
+  if (!container) return;
+
+  container.innerHTML = playersByRank.map(renderPlayersRank).join('');
+}
+
+const PLAYER_RADAR_LABELS = ['Skill', 'Tactics', 'Luck', 'Hiding'];
+const PLAYER_RADAR_KEYS = ['skill', 'tactics', 'luck', 'stealth'];
+const PLAYER_RADAR_MAX = 5;
+
+function polarToCartesian(cx, cy, radius, angleDeg) {
+  const angleRad = ((angleDeg - 90) * Math.PI) / 180;
+  return {
+    x: cx + radius * Math.cos(angleRad),
+    y: cy + radius * Math.sin(angleRad),
+  };
+}
+
+function buildPlayerRadarSvg(stats) {
+  const size = 190;
+  const cx = size / 2;
+  const cy = size / 2;
+  const maxR = size * 0.31;
+  const axisCount = PLAYER_RADAR_KEYS.length;
+  const angles = PLAYER_RADAR_KEYS.map((_, i) => (360 / axisCount) * i);
+
+  let grid = '';
+  for (let level = 1; level <= PLAYER_RADAR_MAX; level += 1) {
+    const r = (maxR * level) / PLAYER_RADAR_MAX;
+    const points = angles
+      .map((angle) => {
+        const point = polarToCartesian(cx, cy, r, angle);
+        return `${point.x},${point.y}`;
+      })
+      .join(' ');
+    grid += `<polygon points="${points}" class="player-radar__grid" />`;
+  }
+
+  let axes = '';
+  angles.forEach((angle) => {
+    const point = polarToCartesian(cx, cy, maxR, angle);
+    axes += `<line x1="${cx}" y1="${cy}" x2="${point.x}" y2="${point.y}" class="player-radar__axis" />`;
+  });
+
+  const dataPoints = PLAYER_RADAR_KEYS.map((key, index) => {
+    const value = Math.min(PLAYER_RADAR_MAX, Math.max(1, stats[key] ?? 1));
+    const r = (maxR * value) / PLAYER_RADAR_MAX;
+    return polarToCartesian(cx, cy, r, angles[index]);
+  });
+  const dataPoly = dataPoints.map((point) => `${point.x},${point.y}`).join(' ');
+
+  let dots = '';
+  dataPoints.forEach((point) => {
+    dots += `<circle cx="${point.x}" cy="${point.y}" r="3" class="player-radar__dot" />`;
+  });
+
+  let labels = '';
+  PLAYER_RADAR_LABELS.forEach((label, index) => {
+    const point = polarToCartesian(cx, cy, maxR + 18, angles[index]);
+    const anchor = index === 1 ? 'start' : index === 3 ? 'end' : 'middle';
+    labels += `<text x="${point.x}" y="${point.y}" class="player-radar__label" text-anchor="${anchor}" dominant-baseline="middle">${label}</text>`;
+  });
+
+  return `
+    <svg class="player-radar" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" role="img" aria-label="Player stats radar chart">
+      ${grid}
+      ${axes}
+      <polygon points="${dataPoly}" class="player-radar__shape" />
+      ${dots}
+      ${labels}
+    </svg>
+  `;
+}
+
+function initPlayerRadarCharts() {
+  document.querySelectorAll('.player-card__tooltip').forEach((tooltip) => {
+    const nick = tooltip.querySelector('.player-card__tooltip-nick')?.textContent.trim();
+    const stats = nick ? playerRadarStats[nick] : null;
+    if (!stats) return;
+
+    const infoEl = tooltip.querySelector('.player-card__tooltip-info');
+    if (!infoEl || tooltip.querySelector('.player-card__tooltip-chart')) return;
+
+    const chartEl = document.createElement('div');
+    chartEl.className = 'player-card__tooltip-chart';
+    chartEl.innerHTML = buildPlayerRadarSvg(stats);
+    tooltip.appendChild(chartEl);
+  });
+}
+
+initPlayersSection();
+initPlayerRadarCharts();
 
 function initRegisterForm() {
   const form = document.getElementById('registerForm');
