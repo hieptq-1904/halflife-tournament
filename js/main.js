@@ -378,8 +378,8 @@ const playersByRank = [
       {
         ingame: 'Khoi',
         fullName: 'Vũ Việt Anh',
-        slogan: 'N/A',
-        intro: 'N/A',
+        slogan: 'Cầm súng và bắn như một người Hải Phòng "gốc"',
+        intro: 'Vua trò chơi',
         stats: { skill: 3, tactics: 3, luck: 2, stealth: 3 },
       },
       {
@@ -600,37 +600,37 @@ const tournamentGroupRounds = [
     round: 2,
     leg: 'First Leg',
     matches: [
-      { home: 'HTS', away: 'Smurf Legion' },
+      { home: 'Bụi 3', away: 'Smurf Legion' },
       { home: '404', away: 'Infinity' },
     ],
-    skip: 'Bụi 3',
+    skip: 'HTS',
   },
   {
     round: 3,
     leg: 'First Leg',
     matches: [
-      { home: 'Bụi 3', away: 'HTS' },
+      { home: '404', away: 'Bụi 3' },
       { home: 'Smurf Legion', away: 'Infinity' },
     ],
-    skip: '404',
+    skip: 'HTS',
   },
   {
     round: 4,
     leg: 'First Leg',
     matches: [
-      { home: '404', away: 'Bụi 3' },
+      { home: 'Bụi 3', away: 'HTS' },
       { home: 'Infinity', away: 'HTS' },
     ],
-    skip: 'Smurf Legion',
+    skip: 'Smurf Legion, 404',
   },
   {
     round: 5,
     leg: 'First Leg',
     matches: [
-      { home: 'Bụi 3', away: 'Smurf Legion' },
+      { home: 'HTS', away: 'Smurf Legion' },
       { home: 'HTS', away: '404' },
     ],
-    skip: 'Infinity',
+    skip: 'Infinity, Bụi 3',
   },
   {
     round: 6,
