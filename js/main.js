@@ -589,6 +589,7 @@ initPlayerRadarCharts();
 const tournamentGroupRounds = [
   {
     round: 1,
+    date: '24/06/2026',
     leg: 'First Leg',
     matches: [
       { home: 'Smurf Legion', away: '404' },
@@ -598,6 +599,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 2,
+    date: '25/06/2026',
     leg: 'First Leg',
     matches: [
       { home: 'Bụi 3', away: 'Smurf Legion' },
@@ -607,6 +609,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 3,
+    date: '26/06/2026',
     leg: 'First Leg',
     matches: [
       { home: '404', away: 'Bụi 3' },
@@ -616,6 +619,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 4,
+    date: '29/06/2026',
     leg: 'First Leg',
     matches: [
       { home: 'Bụi 3', away: 'HTS' },
@@ -625,6 +629,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 5,
+    date: '30/06/2026',
     leg: 'First Leg',
     matches: [
       { home: 'HTS', away: 'Smurf Legion' },
@@ -634,6 +639,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 6,
+    date: '01/07/2026',
     leg: 'Return Leg',
     matches: [
       { home: '404', away: 'Smurf Legion' },
@@ -643,6 +649,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 7,
+    date: '02/07/2026',
     leg: 'Return Leg',
     matches: [
       { home: 'Smurf Legion', away: 'HTS' },
@@ -652,6 +659,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 8,
+    date: '03/07/2026',
     leg: 'Return Leg',
     matches: [
       { home: 'HTS', away: 'Bụi 3' },
@@ -661,6 +669,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 9,
+    date: '06/07/2026',
     leg: 'Return Leg',
     matches: [
       { home: 'Bụi 3', away: '404' },
@@ -670,6 +679,7 @@ const tournamentGroupRounds = [
   },
   {
     round: 10,
+    date: '07/07/2026',
     leg: 'Return Leg',
     matches: [
       { home: 'Smurf Legion', away: 'Bụi 3' },
@@ -698,7 +708,10 @@ function renderTournamentRound(roundData) {
   return `
     <article class="tournament-round" role="listitem">
       <header class="tournament-round__header">
-        <span class="tournament-round__badge">ROUND ${roundData.round}</span>
+        <div class="tournament-round__title">
+          <span class="tournament-round__badge">ROUND ${roundData.round}</span>
+          <span class="tournament-round__date">${roundData.date}</span>
+        </div>
         <span class="tournament-round__time">${roundData.leg}</span>
       </header>
       <div class="tournament-round__matches">
