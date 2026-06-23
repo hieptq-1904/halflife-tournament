@@ -1225,7 +1225,7 @@ function initHeroViewDetail() {
 }
 
 function initCountdown() {
-  const targetDate = new Date('2026-08-12T08:00:00+07:00');
+  const targetDate = new Date('2026-06-24T12:00:00+07:00');
   const countdownEl = document.getElementById('countdown-timer');
   const daysEl = document.getElementById('countdown-days');
   const hoursEl = document.getElementById('countdown-hours');
