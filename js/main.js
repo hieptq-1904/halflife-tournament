@@ -2,6 +2,7 @@ const teams = [
   {
     name: 'Smurf Legion',
     image: 'assets/team-1.png',
+    logo: 'assets/team-logo-1.png',
     detailUrl: '#teams/smurf-legion',
     slogan: 'Born to dominate',
     members: ['Vũ Đình Cường', 'Hàn Văn Huy', 'Nguyễn Đức Việt'],
@@ -9,6 +10,7 @@ const teams = [
   {
     name: 'Infinity',
     image: 'assets/team-2.png',
+    logo: 'assets/team-logo-2.png',
     detailUrl: '#teams/infinity',
     slogan: 'No Pain, No gain',
     members: ['Trần Văn Mỹ', 'Nguyễn Mạnh Tiến', 'Nguyễn Thanh Long'],
@@ -16,6 +18,7 @@ const teams = [
   {
     name: 'HTS',
     image: 'assets/team-3.png',
+    logo: 'assets/team-logo-3.png',
     detailUrl: '#teams/hts',
     slogan: 'One Tap, No Talk',
     members: ['Lê Văn Hội', 'Nguyễn Văn Thành', 'Nguyễn Đình Phước Sơn'],
@@ -23,6 +26,7 @@ const teams = [
   {
     name: '404',
     image: 'assets/team-4.png',
+    logo: 'assets/team-logo-4.png',
     detailUrl: '#teams/404',
     slogan: 'No Trace',
     members: ['Đồng Xuân Đông', 'Nguyễn Công Khanh', 'Bùi Hữu Thắng'],
@@ -30,6 +34,7 @@ const teams = [
   {
     name: 'Bụi 3',
     image: 'assets/team-5.png',
+    logo: 'assets/team-logo-5.png',
     detailUrl: '#teams/bui-3',
     slogan: 'Sinh ra để cầm súng',
     members: ['Hoàng Việt An', 'Vũ Việt Anh', 'Trần Quang Hiệp'],
@@ -83,6 +88,7 @@ const lightboxImageEl = document.querySelector('.lightbox__image');
 const lightboxCaptionEl = document.getElementById('lightbox-caption');
 const teamImageEl = document.querySelector('.team-showcase__image');
 const teamNameEl = document.querySelector('.team-showcase__name');
+const teamLogoEl = document.querySelector('.team-showcase__logo');
 const teamDetailsEl = document.querySelector('.team-showcase__details');
 const teamDetailBtn = document.querySelector('.team-showcase__btn');
 const burger = document.querySelector('.nav__burger');
@@ -130,6 +136,16 @@ function renderTeam(index, skipExit = false) {
     teamImageEl.src = team.image;
     teamImageEl.alt = `${team.name} team banner`;
     teamNameEl.textContent = team.name;
+    if (teamLogoEl) {
+      if (team.logo) {
+        teamLogoEl.src = team.logo;
+        teamLogoEl.alt = `${team.name} team logo`;
+        teamLogoEl.hidden = false;
+      } else {
+        teamLogoEl.hidden = true;
+        teamLogoEl.removeAttribute('src');
+      }
+    }
     teamDetailBtn.href = '#teams';
     teamImageEl.classList.remove('is-fading');
 
@@ -216,21 +232,25 @@ bindPauseOnHover(teamDetailBtn);
 
 let lightboxResumeFn = null;
 
-function openTeamLightbox(teamIndex) {
+function openTeamLightbox(teamIndex, useLogo = false) {
   const team = teams[teamIndex];
   if (!team || !teamLightboxEl || !lightboxImageEl || !lightboxCaptionEl) return;
 
-  lightboxImageEl.src = team.image;
-  lightboxImageEl.alt = `${team.name} team image`;
+  const imageSrc = useLogo && team.logo ? team.logo : team.image;
+  lightboxImageEl.src = imageSrc;
+  lightboxImageEl.alt = `${team.name} ${useLogo ? 'team logo' : 'team image'}`;
   lightboxCaptionEl.textContent = team.name;
   teamLightboxEl.hidden = false;
   teamLightboxEl.classList.add('is-open');
+  teamLightboxEl.classList.toggle('is-logo-view', useLogo && !!team.logo);
+  lightboxImageEl.classList.toggle('lightbox__image--logo', useLogo && !!team.logo);
 }
 
 function closeTeamLightbox() {
   if (!teamLightboxEl) return;
 
   teamLightboxEl.classList.remove('is-open');
+  teamLightboxEl.classList.remove('is-logo-view');
 
   if (lightboxResumeFn) {
     lightboxResumeFn();
@@ -240,15 +260,18 @@ function closeTeamLightbox() {
   window.setTimeout(() => {
     if (!teamLightboxEl.classList.contains('is-open')) {
       teamLightboxEl.hidden = true;
-      if (lightboxImageEl) lightboxImageEl.src = '';
+      if (lightboxImageEl) {
+        lightboxImageEl.src = '';
+        lightboxImageEl.classList.remove('lightbox__image--logo');
+      }
     }
   }, 0);
 }
 
-function openTeamLightboxWithPause(teamIndex, pauseFn, resumeFn) {
+function openTeamLightboxWithPause(teamIndex, pauseFn, resumeFn, useLogo = false) {
   lightboxResumeFn = resumeFn;
   pauseFn();
-  openTeamLightbox(teamIndex);
+  openTeamLightbox(teamIndex, useLogo);
 }
 
 initTeamLightbox();
@@ -689,29 +712,61 @@ const tournamentGroupRounds = [
   },
 ];
 
+const tournamentTeamByName = Object.fromEntries(teams.map((team) => [team.name, team]));
+
+function renderTournamentTeamSide(teamName, side) {
+  const team = tournamentTeamByName[teamName];
+  const logoHtml = team?.logo
+    ? `<img class="match__team-logo" src="${team.logo}" alt="" loading="lazy" />`
+    : '';
+  const nameHtml = `<span class="match__team-name">${teamName}</span>`;
+  const content = side === 'home' ? `${nameHtml}${logoHtml}` : `${logoHtml}${nameHtml}`;
+
+  return `
+    <div class="match__side match__side--${side}">
+      ${content}
+    </div>
+  `;
+}
+
+function renderTournamentSkipTeams(skipText) {
+  return skipText
+    .split(',')
+    .map((name) => name.trim())
+    .filter(Boolean)
+    .map((name) => {
+      const team = tournamentTeamByName[name];
+      const logoHtml = team?.logo
+        ? `<img class="match__team-logo" src="${team.logo}" alt="" loading="lazy" />`
+        : '';
+
+      return `<span class="match__skip-team"><span class="match__team-name">${name}</span>${logoHtml}</span>`;
+    })
+    .join('');
+}
+
 function renderTournamentRound(roundData) {
   const matchesHtml = roundData.matches.map((match) => `
-    <div class="match">
-      <span class="match__team">${match.home}</span>
+    <div class="match match--group">
+      ${renderTournamentTeamSide(match.home, 'home')}
       <span class="match__vs">VS</span>
-      <span class="match__team">${match.away}</span>
+      ${renderTournamentTeamSide(match.away, 'away')}
     </div>
   `).join('');
 
   const skipHtml = roundData.skip ? `
-    <div class="match match--bye">
-      <span class="match__team">${roundData.skip}</span>
+    <div class="match match--group match--bye">
+      <div class="match__skip-teams">${renderTournamentSkipTeams(roundData.skip)}</div>
+      <span class="match__skip-divider" aria-hidden="true"></span>
       <span class="match__vs">SKIP</span>
     </div>
   ` : '';
 
   return `
     <article class="tournament-round" role="listitem">
-      <header class="tournament-round__header">
-        <div class="tournament-round__title">
-          <span class="tournament-round__badge">ROUND ${roundData.round}</span>
-          <span class="tournament-round__date">${roundData.date}</span>
-        </div>
+      <header class="tournament-round__meta">
+        <span class="tournament-round__badge">ROUND ${roundData.round}</span>
+        <span class="tournament-round__date">${roundData.date}</span>
         <span class="tournament-round__time">${roundData.leg}</span>
       </header>
       <div class="tournament-round__matches">
@@ -1026,7 +1081,14 @@ function initTeamsSlider() {
           <img class="teams-slider__image" src="${team.image}" alt="${team.name} team photo" loading="lazy" />
         </button>
         <div class="teams-slider__info">
-          <h3 class="teams-slider__name">${team.name}</h3>
+          <div class="teams-slider__heading">
+            ${team.logo ? `
+              <button type="button" class="teams-slider__logo-wrap" aria-label="View ${team.name} team logo">
+                <img class="teams-slider__logo" src="${team.logo}" alt="${team.name} team logo" loading="lazy" />
+              </button>
+            ` : ''}
+            <h3 class="teams-slider__name">${team.name}</h3>
+          </div>
           <p class="teams-slider__slogan">&ldquo;${team.slogan}&rdquo;</p>
           <p class="teams-slider__members-label">// Squad Members</p>
           <ul class="teams-slider__members">
@@ -1080,6 +1142,15 @@ function initTeamsSlider() {
         if (!slide) return;
         const index = parseInt(slide.dataset.teamIndex, 10);
         openTeamLightboxWithPause(index, pauseTeamAutoplay, resumeTeamAutoplay);
+      });
+    });
+
+    trackEl.querySelectorAll('.teams-slider__logo-wrap').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const slide = btn.closest('.teams-slider__slide');
+        if (!slide) return;
+        const index = parseInt(slide.dataset.teamIndex, 10);
+        openTeamLightboxWithPause(index, pauseTeamAutoplay, resumeTeamAutoplay, true);
       });
     });
 
