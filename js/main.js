@@ -4,7 +4,7 @@ const teams = [
     image: 'assets/team-1.png',
     detailUrl: '#teams/smurf-legion',
     slogan: 'Born to dominate',
-    members: ['Vũ Đình Cường', 'Hàn Văn Huy', 'Trần Quang Hiệp'],
+    members: ['Vũ Đình Cường', 'Hàn Văn Huy', 'Nguyễn Đức Việt'],
   },
   {
     name: 'Infinity',
@@ -32,7 +32,7 @@ const teams = [
     image: 'assets/team-5.png',
     detailUrl: '#teams/bui-3',
     slogan: 'Sinh ra để cầm súng',
-    members: ['Hoàng Việt An', 'Vũ Việt Anh', 'Nguyễn Đức Việt'],
+    members: ['Hoàng Việt An', 'Vũ Việt Anh', 'Trần Quang Hiệp'],
   },
 ];
 
