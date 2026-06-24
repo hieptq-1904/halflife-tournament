@@ -756,6 +756,7 @@ function renderTournamentRound(roundData) {
 
       return `
         <div class="match match--group${hasScore ? ' match--has-result' : ''}">
+          <span class="match__format match__format--corner" aria-label="Best of 3">BO3</span>
           <div class="match__row">
             ${renderTournamentTeamSide(match.home, `home${homeIsWinner ? ' match__side--winner' : awayIsWinner ? ' match__side--loser' : ''}`)}
             <span class="match__vs">VS</span>

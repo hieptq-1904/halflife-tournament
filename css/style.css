@@ -1593,6 +1593,33 @@ img {
   grid-column: 1 / -1;
 }
 
+.match--group .match__format {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  color: rgba(232, 237, 242, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  background: rgba(0, 212, 255, 0.06);
+  clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+
+.match--group .match__format--corner {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+}
+
+.match--group {
+  position: relative;
+}
+
 .match--group .match__side {
   display: flex;
   align-items: center;
