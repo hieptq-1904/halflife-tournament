@@ -1323,6 +1323,148 @@ img {
   margin-top: 2rem;
 }
 
+.tournament-leaderboard {
+  margin-top: 1.75rem;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  background: rgba(0, 212, 255, 0.03);
+  padding: 1.25rem;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.tournament-leaderboard__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tournament-leaderboard__badge {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.tournament-leaderboard__note {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tournament-leaderboard__table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.leaderboard-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.leaderboard-table__th,
+.leaderboard-table__td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.leaderboard-table__th {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232, 237, 242, 0.92);
+  background: rgba(0, 212, 255, 0.06);
+  border-bottom-color: rgba(0, 212, 255, 0.18);
+}
+
+.leaderboard-table__th--team,
+.leaderboard-table__td--team {
+  text-align: left;
+}
+
+.leaderboard-table__th--rank,
+.leaderboard-table__td--rank {
+  width: 4.5rem;
+}
+
+.leaderboard-table__td {
+  font-size: 0.9rem;
+  color: rgba(232, 237, 242, 0.92);
+}
+
+.leaderboard-table__row {
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.leaderboard-table__row:hover {
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.leaderboard-table__row--top {
+  background: linear-gradient(90deg, rgba(255, 107, 43, 0.14), rgba(0, 212, 255, 0.04));
+  box-shadow: inset 0 0 0 1px rgba(255, 107, 43, 0.22);
+}
+
+.leaderboard-table__rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 1.6rem;
+  padding: 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #051018;
+  background: rgba(0, 212, 255, 0.95);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.25);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.leaderboard-table__row--top .leaderboard-table__rank-badge {
+  background: rgba(255, 107, 43, 0.95);
+  box-shadow: 0 0 18px rgba(255, 107, 43, 0.3);
+}
+
+.leaderboard-table__team {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.leaderboard-table__team-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: cover;
+}
+
+.leaderboard-table__cell--pos {
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.leaderboard-table__cell--neg {
+  color: rgba(255, 107, 43, 0.92);
+  font-weight: 800;
+}
+
+.leaderboard-table__cell--zero {
+  color: rgba(232, 237, 242, 0.72);
+}
+
 .tournament-chart__meta {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1434,8 +1576,8 @@ img {
 
 .match--group {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
+  grid-template-columns: 1fr;
+  align-items: stretch;
   gap: 1.1rem;
   min-height: 68px;
   padding: 0.95rem 1.15rem;
@@ -1443,11 +1585,85 @@ img {
   background: rgba(255, 255, 255, 0.02);
 }
 
+.match--group .match__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.1rem;
+  grid-column: 1 / -1;
+}
+
 .match--group .match__side {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   min-width: 0;
+}
+
+.match--group.match--has-result {
+  border-color: rgba(0, 212, 255, 0.14);
+}
+
+.match--group .match__result {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.65rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  grid-column: 1 / -1;
+}
+
+.match--group .match__result-score {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: rgba(232, 237, 242, 0.92);
+  text-transform: uppercase;
+}
+
+.match__side--winner {
+  position: relative;
+  padding: 0.75rem 0.65rem 0.55rem;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.14), rgba(0, 212, 255, 0.04));
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  box-shadow:
+    0 0 18px rgba(0, 212, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.match__side--winner::after {
+  content: 'WIN';
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  padding: 0.15rem 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: #061018;
+  background: rgba(0, 212, 255, 0.95);
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.22);
+}
+
+.match__side--loser {
+  opacity: 0.72;
+  filter: saturate(0.9);
+}
+
+.match__side--winner .match__team-name {
+  color: var(--color-accent);
+  text-shadow: 0 0 14px rgba(0, 212, 255, 0.28);
+}
+
+.match__side--winner .match__team-logo {
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22));
+}
+
+.match__side--loser .match__team-name {
+  color: rgba(232, 237, 242, 0.72);
 }
 
 .match__side {

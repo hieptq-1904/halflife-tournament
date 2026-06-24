@@ -615,7 +615,7 @@ const tournamentGroupRounds = [
     date: '24/06/2026',
     leg: 'First Leg',
     matches: [
-      { home: 'Smurf Legion', away: '404' },
+      { home: 'Smurf Legion', away: '404', score: { home: 2, away: 0 } },
       { home: 'Infinity', away: 'Bụi 3' },
     ],
     skip: 'HTS',
@@ -746,13 +746,32 @@ function renderTournamentSkipTeams(skipText) {
 }
 
 function renderTournamentRound(roundData) {
-  const matchesHtml = roundData.matches.map((match) => `
-    <div class="match match--group">
-      ${renderTournamentTeamSide(match.home, 'home')}
-      <span class="match__vs">VS</span>
-      ${renderTournamentTeamSide(match.away, 'away')}
-    </div>
-  `).join('');
+  const matchesHtml = roundData.matches
+    .map((match) => {
+      const hasScore = Boolean(match.score);
+      const homeScore = hasScore ? Number(match.score.home) : null;
+      const awayScore = hasScore ? Number(match.score.away) : null;
+      const homeIsWinner = hasScore && homeScore > awayScore;
+      const awayIsWinner = hasScore && awayScore > homeScore;
+
+      return `
+        <div class="match match--group${hasScore ? ' match--has-result' : ''}">
+          <div class="match__row">
+            ${renderTournamentTeamSide(match.home, `home${homeIsWinner ? ' match__side--winner' : awayIsWinner ? ' match__side--loser' : ''}`)}
+            <span class="match__vs">VS</span>
+            ${renderTournamentTeamSide(match.away, `away${awayIsWinner ? ' match__side--winner' : homeIsWinner ? ' match__side--loser' : ''}`)}
+          </div>
+          ${
+            hasScore
+              ? `<div class="match__result" aria-label="Result ${homeScore} to ${awayScore}">
+                   <span class="match__result-score">${homeScore}&nbsp;-&nbsp;${awayScore}</span>
+                 </div>`
+              : ''
+          }
+        </div>
+      `;
+    })
+    .join('');
 
   const skipHtml = roundData.skip ? `
     <div class="match match--group match--bye">
@@ -785,6 +804,57 @@ function initTournamentChart() {
 }
 
 initTournamentChart();
+
+const leaderboardRows = [
+  { rank: 1, team: 'Smurf Legion', win: 1, lose: 0, gw: 2, gl: 0, hs: 2 },
+  { rank: 2, team: 'Infinity', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
+  { rank: 3, team: 'HTS', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
+  { rank: 4, team: 'Bụi 3', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
+  { rank: 5, team: '404', win: 0, lose: 1, gw: 0, gl: 2, hs: -2 },
+];
+
+function classForHsValue(value) {
+  if (value > 0) return 'leaderboard-table__cell--pos';
+  if (value < 0) return 'leaderboard-table__cell--neg';
+  return 'leaderboard-table__cell--zero';
+}
+
+function initLeaderboard() {
+  const body = document.getElementById('leaderboardBody');
+  if (!body) return;
+
+  const sorted = [...leaderboardRows].sort((a, b) => a.rank - b.rank);
+  body.innerHTML = sorted
+    .map((row) => {
+      const topClass = row.rank === 1 ? ' leaderboard-table__row--top' : '';
+      const hsClass = classForHsValue(row.hs);
+      const team = tournamentTeamByName[row.team];
+      const logoHtml = team?.logo
+        ? `<img class="leaderboard-table__team-logo" src="${team.logo}" alt="" loading="lazy" />`
+        : '';
+      return `
+        <tr class="leaderboard-table__row${topClass}">
+          <td class="leaderboard-table__td leaderboard-table__td--rank">
+            <span class="leaderboard-table__rank-badge">${row.rank}</span>
+          </td>
+          <td class="leaderboard-table__td leaderboard-table__td--team">
+            <span class="leaderboard-table__team">
+              ${logoHtml}
+              ${row.team}
+            </span>
+          </td>
+          <td class="leaderboard-table__td">${row.win}</td>
+          <td class="leaderboard-table__td">${row.lose}</td>
+          <td class="leaderboard-table__td">${row.gw}</td>
+          <td class="leaderboard-table__td">${row.gl}</td>
+          <td class="leaderboard-table__td ${hsClass}">${row.hs}</td>
+        </tr>
+      `;
+    })
+    .join('');
+}
+
+initLeaderboard();
 
 function initRegisterForm() {
   const form = document.getElementById('registerForm');
