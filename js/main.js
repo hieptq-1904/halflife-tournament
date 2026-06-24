@@ -616,7 +616,7 @@ const tournamentGroupRounds = [
     leg: 'First Leg',
     matches: [
       { home: 'Smurf Legion', away: '404', score: { home: 2, away: 0 } },
-      { home: 'Infinity', away: 'Bụi 3' },
+      { home: 'Infinity', away: 'Bụi 3', score: { home: 0, away: 2 } },
     ],
     skip: 'HTS',
   },
@@ -808,10 +808,10 @@ initTournamentChart();
 
 const leaderboardRows = [
   { rank: 1, team: 'Smurf Legion', win: 1, lose: 0, gw: 2, gl: 0, hs: 2 },
-  { rank: 2, team: 'Infinity', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
-  { rank: 3, team: 'HTS', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
-  { rank: 4, team: 'Bụi 3', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
-  { rank: 5, team: '404', win: 0, lose: 1, gw: 0, gl: 2, hs: -2 },
+  { rank: 1, team: 'Bụi 3', win: 1, lose: 0, gw: 2, gl: 0, hs: 2 },
+  { rank: 2, team: 'HTS', win: 0, lose: 0, gw: 0, gl: 0, hs: 0 },
+  { rank: 3, team: 'Infinity', win: 0, lose: 1, gw: 0, gl: 2, hs: -2 },
+  { rank: 3, team: '404', win: 0, lose: 1, gw: 0, gl: 2, hs: -2 },
 ];
 
 function classForHsValue(value) {
@@ -824,7 +824,7 @@ function initLeaderboard() {
   const body = document.getElementById('leaderboardBody');
   if (!body) return;
 
-  const sorted = [...leaderboardRows].sort((a, b) => a.rank - b.rank);
+  const sorted = [...leaderboardRows].sort((a, b) => a.rank - b.rank || a.team.localeCompare(b.team));
   body.innerHTML = sorted
     .map((row) => {
       const topClass = row.rank === 1 ? ' leaderboard-table__row--top' : '';

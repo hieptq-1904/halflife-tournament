@@ -1675,6 +1675,36 @@ img {
   box-shadow: 0 0 14px rgba(0, 212, 255, 0.22);
 }
 
+.match--group .match__side--away.match__side--winner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 0.75rem;
+  row-gap: 0.2rem;
+  padding-top: 0.55rem;
+}
+
+.match--group .match__side--away.match__side--winner .match__team-logo {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+
+.match--group .match__side--away.match__side--winner::after {
+  position: static;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  top: auto;
+  right: auto;
+}
+
+.match--group .match__side--away.match__side--winner .match__team-name {
+  grid-column: 2;
+  grid-row: 2;
+}
+
 .match__side--loser {
   opacity: 0.72;
   filter: saturate(0.9);
